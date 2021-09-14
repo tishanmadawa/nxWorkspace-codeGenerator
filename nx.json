@@ -1,0 +1,60 @@
+{
+  "npmScope": "nx-vision",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "projects": {
+    "common-common": {
+      "tags": []
+    },
+    "drag-and-drop": {
+      "tags": []
+    },
+    "drag-and-drop-e2e": {
+      "tags": [],
+      "implicitDependencies": ["drag-and-drop"]
+    },
+    "draganddrop": {
+      "tags": []
+    },
+    "draganddrop-e2e": {
+      "tags": [],
+      "implicitDependencies": ["draganddrop"]
+    },
+    "fields-checkbox": {
+      "tags": []
+    },
+    "fields-email": {
+      "tags": []
+    },
+    "fields-number": {
+      "tags": []
+    },
+    "fields-radio": {
+      "tags": []
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@nx-vision/common/common": ["libs/common/common/src/index.ts"],
+      "@nx-vision/fields/checkbox": ["libs/fields/checkbox/src/index.ts"],
+      "@nx-vision/fields/email": ["libs/fields/email/src/index.ts"],
+      "@nx-vision/fields/number": ["libs/fields/number/src/index.ts"],
+      "@nx-vision/fields/radio": ["libs/fields/radio/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

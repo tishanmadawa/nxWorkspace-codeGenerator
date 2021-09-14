@@ -1,0 +1,339 @@
+{
+  "version": 2,
+  "projects": {
+    "common-common": {
+      "root": "libs/common/common",
+      "sourceRoot": "libs/common/common/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/common/common/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/common/common"],
+          "options": {
+            "jestConfig": "libs/common/common/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "drag-and-drop": {
+      "root": "apps/drag-and-drop",
+      "sourceRoot": "apps/drag-and-drop/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/drag-and-drop",
+            "index": "apps/drag-and-drop/src/index.html",
+            "main": "apps/drag-and-drop/src/main.tsx",
+            "polyfills": "apps/drag-and-drop/src/polyfills.ts",
+            "tsConfig": "apps/drag-and-drop/tsconfig.app.json",
+            "assets": [
+              "apps/drag-and-drop/src/favicon.ico",
+              "apps/drag-and-drop/src/assets"
+            ],
+            "styles": [],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/drag-and-drop/src/environments/environment.ts",
+                  "with": "apps/drag-and-drop/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "drag-and-drop:build",
+            "hmr": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "drag-and-drop:build:production",
+              "hmr": false
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/drag-and-drop/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/drag-and-drop"],
+          "options": {
+            "jestConfig": "apps/drag-and-drop/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "drag-and-drop-e2e": {
+      "root": "apps/drag-and-drop-e2e",
+      "sourceRoot": "apps/drag-and-drop-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/drag-and-drop-e2e/cypress.json",
+            "tsConfig": "apps/drag-and-drop-e2e/tsconfig.e2e.json",
+            "devServerTarget": "drag-and-drop:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "drag-and-drop:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/drag-and-drop-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "draganddrop": {
+      "root": "apps/draganddrop",
+      "sourceRoot": "apps/draganddrop/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/draganddrop",
+            "index": "apps/draganddrop/src/index.html",
+            "main": "apps/draganddrop/src/main.tsx",
+            "polyfills": "apps/draganddrop/src/polyfills.ts",
+            "tsConfig": "apps/draganddrop/tsconfig.app.json",
+            "assets": [
+              "apps/draganddrop/src/favicon.ico",
+              "apps/draganddrop/src/assets"
+            ],
+            "styles": [],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/draganddrop/src/environments/environment.ts",
+                  "with": "apps/draganddrop/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "draganddrop:build",
+            "hmr": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "draganddrop:build:production",
+              "hmr": false
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/draganddrop/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/draganddrop"],
+          "options": {
+            "jestConfig": "apps/draganddrop/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "draganddrop-e2e": {
+      "root": "apps/draganddrop-e2e",
+      "sourceRoot": "apps/draganddrop-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/draganddrop-e2e/cypress.json",
+            "devServerTarget": "draganddrop:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "draganddrop:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/draganddrop-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "fields-checkbox": {
+      "root": "libs/fields/checkbox",
+      "sourceRoot": "libs/fields/checkbox/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/fields/checkbox/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/fields/checkbox"],
+          "options": {
+            "jestConfig": "libs/fields/checkbox/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "fields-email": {
+      "root": "libs/fields/email",
+      "sourceRoot": "libs/fields/email/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/fields/email/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/fields/email"],
+          "options": {
+            "jestConfig": "libs/fields/email/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "fields-number": {
+      "root": "libs/fields/number",
+      "sourceRoot": "libs/fields/number/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/fields/number/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/fields/number"],
+          "options": {
+            "jestConfig": "libs/fields/number/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "fields-radio": {
+      "root": "libs/fields/radio",
+      "sourceRoot": "libs/fields/radio/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/fields/radio/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/fields/radio"],
+          "options": {
+            "jestConfig": "libs/fields/radio/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/react"
+  },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "style": "styled-components",
+        "linter": "eslint",
+        "babel": true
+      },
+      "component": {
+        "style": "styled-components"
+      },
+      "library": {
+        "style": "styled-components",
+        "linter": "eslint"
+      }
+    }
+  },
+  "defaultProject": "drag-and-drop"
+}
