@@ -1,2 +1,2 @@
 # nxWorkspace-codeGenerator
-using nx workspace generate library code and change specific application include code
+using nx workspace generator generate library code and specific application changes
